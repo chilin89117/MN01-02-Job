@@ -1,15 +1,14 @@
-const bodyParser = require('body-parser');
+const fs = require('fs');
 const cors = require('cors');
 const express = require('express');
 const expressJwt = require('express-jwt');
 const jwt = require('jsonwebtoken');
 const db = require('./db');
-const fs = require('fs');
 
 const app = express();
 const port = 4000;
 const jwtSecret = Buffer.from('Zn8Q5tyZ/G1MHltc4F/gTkVJMlrbKiZt', 'base64');
-app.use(cors(), bodyParser.json(), expressJwt({
+app.use(cors(), express.json(), expressJwt({
   secret: jwtSecret,
   credentialsRequired: false
 }));
